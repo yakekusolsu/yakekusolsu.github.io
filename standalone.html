@@ -1,0 +1,1061 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#edeae0">
+  <meta name="description" content="YousotuNeet の個人ホームページ。Minecraft、制作物、雑記など。">
+  <title>YousotuNeet's Home Page</title>
+<style>/* YousotuNeet's Home Page | 2000s BBS + terminal */
+:root {
+  color-scheme: light;
+  --page: #efeee6;
+  --paper: #faf9f2;
+  --panel: #e8e6dc;
+  --ink: #2c2b26;
+  --sub: #5a594f;
+  --line: #aaa89b;
+  --line-strong: #7f7f74;
+  --blue: #15458b;
+  --visited: #684584;
+  --red: #9b2a27;
+  --olive: #536026;
+  --bar: #d9d8cd;
+  --term-bg: #0c110d;
+  --term-fg: #b1d5a2;
+  --term-accent: #e4b87a;
+  --term-muted: #8b9985;
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  margin: 0; background: var(--page); color: var(--ink);
+  font: 13px/1.65 Verdana, "MS PGothic", "ＭＳ Ｐゴシック", Osaka, sans-serif;
+}
+a { color: var(--blue); text-decoration: underline; text-underline-offset: 2px; }
+a:visited { color: var(--visited); }
+a:hover { color: #c43826; background: #fffbda; }
+button,input,textarea { font: inherit; }
+button { cursor: pointer; }
+button:disabled { cursor: not-allowed; opacity: .6; }
+:focus-visible { outline: 2px solid #cc4c1d; outline-offset: 3px; }
+.skip-link { position: absolute; left: 8px; top: -80px; background: white; z-index: 10; padding: 6px 10px; }
+.skip-link:focus { top: 8px; }
+.site-shell { width: min(1270px, calc(100% - 48px)); margin: 22px auto 36px; }
+.masthead { background: var(--paper); border: 1px solid var(--line-strong); border-top: 3px double #56574f; }
+.top-notice { padding: 2px 12px; display: flex; justify-content: space-between; gap: 12px; border-bottom: 1px solid var(--line); font: 10px/1.9 monospace; color: var(--sub); background: #d9d7cc; }
+.clock { font-variant-numeric: tabular-nums; }
+.title-row { padding: 21px 21px 18px; display: flex; justify-content: space-between; align-items: center; gap: 25px; }
+.title-main { display: flex; align-items: center; gap: 16px; min-width: 0; }
+.site-stamp { border: 3px solid #38392e; outline: 1px solid var(--line); outline-offset: 2px; box-shadow: 3px 3px 0 #cfcbc0; color: var(--blue); font: 900 38px/.95 Georgia, serif; width: 66px; height: 66px; text-align: center; padding-top: 10px; flex: none; background: #edeadf; transform: rotate(-1.5deg); }
+.site-stamp span { color: var(--red); font-size: 19px; vertical-align: sub; margin-left: -7px; }
+.micro { margin: 0 0 1px; letter-spacing: 1px; color: var(--olive); font-size: 11px; }
+h1 { font-family: Georgia, "MS PGothic", serif; font-size: clamp(22px, 2.35vw, 30px); color: #282e45; line-height: 1.25; letter-spacing: -.6px; margin: 0; }
+.title-suffix { color: #545147; font: 500 14px/1.2 "MS PGothic", sans-serif; white-space: nowrap; }
+.description { margin: 9px 0 0; color: #5f5c50; }
+.header-meta { color: var(--sub); font-size: 11px; min-width: 207px; padding: 8px 10px; line-height: 1.95; background: #f1efe5; border: 1px dotted var(--line); white-space: nowrap; }
+.header-meta strong { color: #37342d; }
+#visit-counter { background: #181c15; color: #e3dfbe; letter-spacing: 3px; font: 13px/1.5 "Courier New", monospace; border: 2px inset #88897e; padding: 0 2px 0 5px; }
+.top-links { background: #e0dfd5; padding: 6px 16px; border-top: 1px solid var(--line); display: flex; gap: 8px; flex-wrap: wrap; font-family: Georgia, monospace; font-size: 12px; font-weight: 700; }
+.top-links span { color: #88867d; }
+.top-links a[aria-current="page"] { color: var(--red); background: #f5f3e9; text-decoration: none; }
+.page-grid { display: grid; grid-template-columns: 181px minmax(0, 1fr) 302px; align-items: start; gap: 12px; margin-top: 14px; }
+.sidebar, .terminal-column { min-width: 0; }
+.side-box { border: 1px solid var(--line); background: var(--paper); margin-bottom: 12px; padding: 0 9px 9px; }
+.side-box h2 { font-size: 12px; font-weight: 700; color: #373830; margin: 0 -9px 8px; padding: 3px 8px; border-bottom: 1px solid #aaa89c; background: #d8d6c9; }
+.side-box p { margin: 7px 0; font-size: 12px; line-height: 1.7; }
+.folder-menu { padding: 0; margin: 0; list-style: none; }
+.folder-menu li { margin-bottom: 2px; }
+.folder-menu a { display: block; padding: 4px 2px 4px 9px; color: #164488; text-decoration: none; border-bottom: 1px dotted #c9c7bb; position: relative; }
+.folder-menu a::before { content: "›"; color: #9e4c24; position: absolute; left: 0; }
+.folder-menu a:hover,.folder-menu a[aria-current="page"] { background: #fff6d8; color: #9c3225; text-decoration: underline; }
+.mini-profile p { overflow-wrap: anywhere; }
+.retro-banner { margin: 13px auto 3px; height: 31px; width: 88px; text-align: center; border: 2px outset #b9b7a9; background: repeating-linear-gradient(90deg,#292d30 0,#292d30 6px,#41464b 6px,#41464b 7px); color: #ffffc5; line-height: 1; display: flex; flex-direction: column; align-items: center; justify-content: center; }
+.retro-banner span { font: 9px "Courier New", monospace; letter-spacing: 1.7px; }
+.retro-banner strong { font: 700 10px Arial,sans-serif; }
+kbd { background: #e8e7dc; border: 1px solid #aca99d; padding: 0 3px; font: 11px monospace; }
+.old-button { background: #e7e5da; border: 2px outset #fdfcf6; padding: 3px 6px; color: #234683; font-size: 12px; }
+.old-button:active { border-style: inset; }
+.main-content { min-width: 0; }
+.paper { border: 1px solid var(--line-strong); background: var(--paper); padding: 13px 15px 17px; margin-bottom: 12px; }
+.location { font-size: 11px; color: var(--sub); margin: 0 0 10px; border-bottom: 1px dotted var(--line); padding-bottom: 5px; }
+.board-title { margin: 0 0 9px; color: #263c70; font: 700 18px/1.4 Georgia,"MS PGothic",serif; }
+.board-title::before { content: "■ "; color: #a24929; font-size: 14px; }
+.section-title { margin: 15px 0 5px; font-size: 13px; color: #8c3b20; font-weight: bold; border-left: 4px solid #a06e2e; padding-left: 6px; }
+.board-intro { font-size: 12px; color: var(--sub); margin: 2px 0 14px; }
+.notice { background: #f6f3dc; border: 1px solid #ccc59d; padding: 7px 9px; margin: 11px 0 14px; font-size: 12px; }
+.notice strong { color: #8a3125; }
+.inline-links { padding-top: 10px; font-size: 12px; }
+.link-dot { margin: 0 7px; color: #888; }
+.bbs-search { display: flex; align-items: center; gap: 7px; flex-wrap: wrap; margin: 8px 0; }
+.bbs-search label { white-space: nowrap; font-size: 12px; }
+.bbs-search input { min-width: 0; flex: 1; padding: 4px 5px; border: 2px inset #ddd; background: #fff; border-radius: 0; color: var(--ink); }
+.bbs-table { width: 100%; border-collapse: collapse; font-size: 12px; background: #fffefa; margin-top: 8px; }
+.bbs-table caption { text-align: left; margin-bottom: 4px; color: var(--sub); font-size: 11px; }
+.bbs-table th { padding: 5px 6px; text-align: left; background: #d6d4c7; color: #38372d; border: 1px solid #a7a495; white-space: nowrap; }
+.bbs-table td { padding: 7px 6px; border: 1px solid #cbc9bd; vertical-align: top; }
+.bbs-table tbody tr:nth-child(even) { background: #f2f1ea; }
+.bbs-table tbody tr:hover { background: #fff5d7; }
+.bbs-table td:first-child { width: 34px; color: #776e61; text-align: center; font: 12px/1.5 monospace; }
+.bbs-table .col-count { width: 41px; text-align: center; font-family: monospace; }
+.bbs-table .col-date { width: 103px; white-space: nowrap; font: 11px/1.6 monospace; }
+.category { color: #77746a; font-size: 11px; margin-left: 5px; }
+.bbs-bottom { margin: 8px 0 0; color: var(--sub); font-size: 11px; }
+.small-print { font-size: 11px; color: var(--sub); }
+.latest-list { padding: 0 0 0 16px; margin: 5px 0 0; }
+.latest-list li { padding-bottom: 4px; }
+.thread-top { margin-bottom: 11px; }
+.thread-top h2 { font-size: 17px; line-height: 1.45; margin: 7px 0 4px; color: #273c6f; }
+.thread-meta { font-size: 11px; color: var(--sub); margin-bottom: 12px; }
+.post { margin: 0 0 9px; padding: 10px 11px 11px; background: #fffefa; border: 1px solid #c5c1b4; }
+.post:target { background: #fff9e1; }
+.post-head { color: #646154; font: 12px/1.6 "Courier New","MS PGothic",monospace; margin-bottom: 10px; overflow-wrap: anywhere; }
+.post-num { font-weight: bold; color: #8d3b21; }
+.post-author { color: #1b6a3b; font-weight: bold; }
+.post-id { color: #8c8579; font-size: 11px; }
+.post-subject { font-weight: 700; color: #343434; margin: 0 0 7px; }
+.post-body { padding-left: 13px; overflow-wrap: anywhere; font-size: 13px; }
+.post-body p { margin: 0 0 9px; }
+.post-body p:last-child { margin-bottom: 0; }
+.post-body ul { padding-left: 20px; margin: 2px 0; }
+.post-body li { margin: 0 0 5px; }
+.post-body .link-line { margin: 5px 0; }
+.post-refs { font-size: 11px; color: var(--olive); margin-top: 10px; }
+.thread-footnote { color: #77746c; font-size: 11px; margin: 12px 0; }
+.entry-form { padding: 12px; background: #efeee7; border: 1px solid #aaa89d; }
+.entry-form label { display: block; margin-bottom: 3px; font-weight: bold; }
+.entry-form input, .entry-form textarea { display: block; width: 100%; padding: 6px; border: 2px inset #d2d0c6; background: white; color: #202020; border-radius: 0; margin-bottom: 10px; }
+.entry-form textarea { min-height: 86px; resize: vertical; }
+.entry-actions { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; }
+.entry-actions button { background: #e7e7dc; padding: 5px 10px; border: 2px outset #fff; }
+.entry-actions button:active { border-style: inset; }
+.entry-preview { margin-top: 13px; }
+.entry-list { list-style: none; padding: 0; margin: 6px 0 0; }
+.entry-list li { padding: 10px; border: 1px solid #c5c3b9; background: #fffefa; margin-bottom: 6px; }
+.entry-list .entry-meta { color: #486b3a; font-size: 11px; margin-bottom: 5px; }
+.entry-list p { margin: 0; white-space: pre-wrap; overflow-wrap: anywhere; }
+.terminal-column { position: sticky; top: 14px; }
+.terminal-outer { border: 2px outset #babbae; background: #777b72; box-shadow: 2px 2px 0 #b9b8af; }
+.terminal-titlebar { background: linear-gradient(90deg,#3f493d,#76836d); color: #fafbf6; padding: 3px 6px 3px 8px; font: 700 12px/1.5 "Courier New",monospace; display: flex; justify-content: space-between; gap: 8px; }
+.indicator { display: inline-block; width: 8px; height: 8px; background: #bada90; border: 1px solid #253a24; margin-right: 4px; }
+.terminal-titlebar button { padding: 0 3px; font: 12px/1.5 monospace; background: #c4c6b8; border: 1px outset #eee; min-width: 30px; color: #1e261d; }
+.terminal-inner { background: var(--term-bg); color: var(--term-fg); padding: 12px 10px 7px; font: 12px/1.55 "Courier New", "MS Gothic", monospace; }
+.terminal-output { height: 320px; overflow-y: auto; scrollbar-color: #697263 #1b241b; overscroll-behavior: contain; white-space: pre-wrap; overflow-wrap: anywhere; }
+.terminal-line { margin: 0 0 3px; white-space: pre-wrap; }
+.terminal-line.command { color: #f5f3d2; }
+.terminal-line.muted { color: var(--term-muted); }
+.terminal-line.error { color: #ff9b94; }
+.terminal-line.accent { color: var(--term-accent); }
+.terminal-prompt { display: flex; flex-wrap: wrap; gap: 4px; margin-top: 7px; align-items: baseline; border-top: 1px solid #304033; padding-top: 7px; }
+.terminal-prompt label { white-space: nowrap; color: var(--term-accent); }
+.terminal-prompt input { width: 70px; flex: 1; min-width: 42px; border: 0; background: transparent; padding: 0; color: #f5f7db; font: inherit; caret-color: #c1d9a7; outline: none; border-radius: 0; }
+.terminal-prompt:focus-within { background: #131f16; }
+.terminal-hint { color: var(--term-muted); font: 10px/1.6 monospace; margin-top: 5px; }
+.terminal-inner[hidden] { display: none; }
+.about-terminal { margin-top: 12px; }
+.link-button { border: 0; padding: 0; background: none; color: var(--blue); text-decoration: underline; cursor: pointer; }
+.link-button:hover { color: var(--red); }
+.site-footer { margin-top: 15px; border-top: 3px double #969287; text-align: center; padding: 12px 6px; color: var(--sub); font-size: 11px; display: flex; justify-content: center; flex-wrap: wrap; gap: 4px 14px; }
+.footer-glyph { color: #847f71; }
+.theme-amber { --term-fg: #edbd7a; --term-accent: #fbddab; --term-bg: #150f08; --term-muted: #a88a67; }
+.theme-green { --term-fg: #5bfb82; --term-accent: #b0ffb9; --term-bg: #030b05; --term-muted: #679e78; }
+@media (max-width: 1120px) {
+  .page-grid { grid-template-columns: 181px minmax(0,1fr); }
+  .terminal-column { grid-column: 2; position: static; }
+  .terminal-output { height: 220px; }
+  .about-terminal { display: none; }
+}
+@media (max-width: 740px) {
+  .site-shell { width: calc(100% - 20px); margin: 10px auto 18px; }
+  .title-row { padding: 13px 12px; align-items: start; gap: 11px; flex-wrap: wrap; }
+  .site-stamp { height: 48px; width: 48px; font-size: 27px; padding-top: 8px; }
+  .site-stamp span { font-size: 14px; }
+  h1 { font-size: 24px; }
+  .header-meta { width: 100%; padding: 4px 8px; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 0 10px; min-width: 0; }
+  .page-grid { display: flex; flex-direction: column; gap: 10px; }
+  .sidebar,.main-content,.terminal-column { width: 100%; }
+  .sidebar .side-box { margin: 0; }
+  .sidebar .side-box:not(:first-child) { display: none; }
+  .folder-menu { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 0 6px; }
+  .folder-menu a { padding: 5px 4px 5px 9px; }
+  .main-content { order: 2; }
+  .sidebar { order: 1; }
+  .terminal-column { order: 3; }
+  .paper { padding: 11px 10px 13px; }
+  .post { padding: 9px; }
+  .post-body { padding-left: 2px; }
+  .terminal-output { height: 250px; }
+  .bbs-table .col-date, .bbs-table th.col-date { display: none; }
+  .bbs-table th,.bbs-table td { padding: 6px 4px; }
+  .category { display: none; }
+  .top-links { font-size: 11px; gap: 5px; padding: 5px 8px; }
+}
+@media (max-width: 370px) {
+  .site-stamp { display: none; }
+  .title-suffix { display: block; margin-top: 3px; }
+  .bbs-table .col-count,.bbs-table th.col-count { display: none; }
+}
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+
+/* ---------- neet 2.0 : 2000年頃のテキスト掲示板を意識したモード ---------- */
+.neet-board-header { display: none; }
+body.neet-installed {
+  --page: #efefef;
+  --paper: #efefef;
+  --panel: #dddddd;
+  --ink: #141414;
+  --sub: #555;
+  --line: #aaa;
+  --line-strong: #888;
+  --blue: #0000ee;
+  --visited: #551a8b;
+  --red: #bb0000;
+  --bar: #dedede;
+  background: var(--page);
+  color: var(--ink);
+  font: 13px/1.55 "MS PGothic", "ＭＳ Ｐゴシック", Osaka, Arial, sans-serif;
+}
+body.neet-installed a { color: #0000ee; text-underline-offset: 0; }
+body.neet-installed a:visited { color: #551a8b; }
+body.neet-installed a:hover { color: #ff0000; background: transparent; }
+body.neet-installed .site-shell { width: min(1190px, calc(100% - 18px)); margin: 7px auto 22px; }
+body.neet-installed .masthead { background: transparent; border: 0; }
+body.neet-installed .top-notice { padding: 2px 6px; background: #d9d9d9; border: 1px solid #bcbcbc; color: #666; }
+body.neet-installed .neet-board-header {
+  display: block; padding: 12px 8px 9px; text-align: center;
+  border-bottom: 1px dotted #888;
+}
+body.neet-installed .neet-board-name {
+  color: #c31515; font: 700 clamp(28px, 4.3vw, 46px)/1.3 "MS PGothic", "ＭＳ Ｐゴシック", sans-serif;
+  letter-spacing: 0;
+}
+body.neet-installed .neet-board-tagline { color: #343434; margin-top: 2px; font-weight: bold; font-size: 14px; }
+body.neet-installed .neet-board-header p { margin: 9px 0 0; font-size: 11px; color: #666; }
+body.neet-installed .title-row { display: none; }
+body.neet-installed .top-links {
+  background: none; padding: 7px 4px 9px; border: 0; justify-content: center;
+  font: 12px/1.5 "MS PGothic", sans-serif; gap: 5px;
+}
+body.neet-installed .top-links a { font-weight: normal; }
+body.neet-installed .top-links a[aria-current="page"] { background: none; color: #c31515; text-decoration: underline; }
+body.neet-installed .page-grid {
+  display: grid; grid-template-columns: 162px minmax(0, 1fr); gap: 14px;
+  align-items: start; margin-top: 6px;
+}
+body.neet-installed .sidebar { grid-column: 1; grid-row: 1; }
+body.neet-installed .main-content { grid-column: 2; grid-row: 1; }
+body.neet-installed .terminal-column {
+  grid-column: 1 / -1; grid-row: 2; position: static; min-width: 0;
+  border-top: 1px dotted #999; padding-top: 7px;
+}
+body.neet-installed .terminal-outer { border: 1px solid #898989; box-shadow: none; background: transparent; }
+body.neet-installed .terminal-titlebar { background: #d5d5d5; color: #333; border-bottom: 1px solid #999; font: 700 12px/1.5 monospace; }
+body.neet-installed .terminal-titlebar button { background: #eee; }
+body.neet-installed .terminal-inner { background: #101510; padding: 10px 12px 7px; }
+body.neet-installed .terminal-output { height: 205px; }
+body.neet-installed .about-terminal { display: block; background: none; border: none; padding: 0 6px; margin: 3px 0 0; }
+body.neet-installed .about-terminal h2 { display: none; }
+body.neet-installed .about-terminal p { display: inline; margin-right: 15px; color: #666; font-size: 11px; }
+body.neet-installed .side-box { padding: 0 0 9px; border: 0; margin-bottom: 7px; background: none; }
+body.neet-installed .side-box h2 {
+  margin: 0 0 4px; padding: 3px 4px; background: #d7d7d7;
+  border: 1px solid #a5a5a5; color: #222; text-align: center;
+  font-size: 12px;
+}
+body.neet-installed .side-box p { font-size: 11px; padding: 0 4px; }
+body.neet-installed .folder-menu a {
+  border: 0; padding: 1px 3px 1px 6px; color: #0000ee;
+  text-decoration: underline; font-size: 12px;
+}
+body.neet-installed .folder-menu a::before { content: ""; }
+body.neet-installed .folder-menu a:hover, body.neet-installed .folder-menu a[aria-current="page"] { color: #e00000; background: none; }
+body.neet-installed .mini-profile { border-top: 1px dotted #aaa; padding-top: 4px; }
+body.neet-installed .retro-banner { box-shadow: none; }
+body.neet-installed .paper {
+  border: 0; background: transparent; padding: 0 4px 15px;
+  margin: 0 0 15px;
+}
+body.neet-installed .location { border-bottom: 0; margin-bottom: 7px; padding: 0; }
+body.neet-installed .neet-index-title { color: #bc1616; font-size: 18px; margin: 8px 0 3px; }
+body.neet-installed .neet-board-description { margin: 3px 0 12px; font-size: 12px; }
+body.neet-installed .neet-index-bar { background: #d4d4d4; border: 1px solid #9a9a9a; font-weight: bold; padding: 3px 7px; margin: 8px 0; }
+body.neet-installed .bbs-search { margin: 6px 0; }
+body.neet-installed .bbs-search input { padding: 2px 5px; border: 1px solid #777; width: min(100%, 310px); flex: 0 1 310px; }
+body.neet-installed .neet-thread-list { padding-left: 32px; margin: 12px 0; }
+body.neet-installed .neet-thread-list li { margin: 4px 0; padding: 1px 0; line-height: 1.4; overflow-wrap: anywhere; }
+body.neet-installed .neet-index-count { font-size: 11px; color: #666; margin: 8px 0 14px; }
+body.neet-installed .neet-guide { padding: 2px 6px; line-height: 1.8; }
+body.neet-installed .thread-top h2 { font: bold 18px/1.45 "MS PGothic", sans-serif; color: #c31515; margin-bottom: 5px; }
+body.neet-installed .thread-meta { border-bottom: 1px solid #bbb; padding-bottom: 8px; }
+body.neet-installed .post { margin: 0 0 21px; padding: 0 0 0 3px; border: 0; background: transparent; }
+body.neet-installed .post:target { background: #ffffe0; }
+body.neet-installed .post-head { font: 12px/1.6 "MS PGothic", "ＭＳ Ｐゴシック", sans-serif; margin: 0 0 4px; color: #555; }
+body.neet-installed .post-num { color: #444; font-weight: normal; }
+body.neet-installed .post-author { color: #118a00; }
+body.neet-installed .post-id { color: #555; }
+body.neet-installed .post-subject { margin: 0 0 2px 21px; font-size: 12px; color: #a65c17; font-weight: 600; }
+body.neet-installed .post-body { padding-left: 20px; font-size: 13px; }
+body.neet-installed .post-body p { margin-bottom: 6px; }
+body.neet-installed .post-body ul { margin: 0 0 8px; }
+body.neet-installed .thread-footnote { margin: 10px 0; }
+body.neet-installed .notice { border: 1px solid #ccc; background: #f5f5e8; }
+body.neet-installed .entry-form { background: #dfdfdf; border: 1px solid #aaa; }
+body.neet-installed .entry-list li { border: 0; background: transparent; padding: 3px 0 10px; border-bottom: 1px dotted #bbb; }
+body.neet-installed .site-footer { border-top: 1px solid #aaa; margin-top: 10px; color: #777; }
+@media (max-width: 740px) {
+  body.neet-installed .page-grid { grid-template-columns: minmax(0, 1fr); gap: 8px; }
+  body.neet-installed .sidebar { grid-column: 1; grid-row: 1; }
+  body.neet-installed .main-content { grid-column: 1; grid-row: 2; }
+  body.neet-installed .terminal-column { grid-column: 1; grid-row: 3; }
+  body.neet-installed .sidebar .side-box:first-child { display: block; }
+  body.neet-installed .folder-menu { display: flex; flex-wrap: wrap; gap: 3px 8px; }
+  body.neet-installed .folder-menu a { padding: 1px 2px; }
+  body.neet-installed .neet-board-name { font-size: clamp(22px, 6.6vw, 34px); }
+  body.neet-installed .neet-board-tagline { font-size: 11px; }
+  body.neet-installed .paper { padding: 0 3px 12px; }
+  body.neet-installed .neet-thread-list { padding-left: 26px; }
+  body.neet-installed .terminal-output { height: 220px; }
+  body.neet-installed .about-terminal { display: none; }
+}
+</style></head>
+<body>
+  <a class="skip-link" href="#contents">本文へ移動</a>
+  <div class="site-shell">
+    <header class="masthead">
+      <div class="top-notice"><span>個人ホームページ / PERSONAL WEB PAGE</span><span class="clock" id="clock">----/--/-- --:--</span></div>
+      <div class="neet-board-header" aria-label="YousotuNeetちゃんねる">
+        <div class="neet-board-name">YousotuNeetちゃんねる</div>
+        <div class="neet-board-tagline">～ 管理人の趣味と制作物を勝手に語る板 ～</div>
+        <p>ここは YousotuNeet の個人サイトです。実際の2chとは無関係です。</p>
+      </div>
+      <div class="title-row">
+        <div class="title-main">
+          <div class="site-stamp" aria-hidden="true">Y<span>N</span></div>
+          <div>
+            <p class="micro">■ ようこそ ■</p>
+            <h1>YousotuNeet <span class="title-suffix">のホームページ</span></h1>
+            <p class="description" id="site-description">MinecraftとかWebとか。作ったものを置いてます。</p>
+          </div>
+        </div>
+        <div class="header-meta">
+          <div>管理人：<strong>YousotuNeet</strong></div>
+          <div>更新日：<time id="site-updated">2026.10.19</time></div>
+          <div>このブラウザでの訪問：<output id="visit-counter">000001</output> 回</div>
+        </div>
+      </div>
+      <nav class="top-links" aria-label="上部ナビゲーション">
+        <a href="#home">TOP</a><span>｜</span>
+        <a href="#thread/profile">PROFILE</a><span>｜</span>
+        <a href="#thread/works">WORKS</a><span>｜</span>
+        <a href="#thread/log">DIARY</a><span>｜</span>
+        <a href="#guestbook">BBS</a><span>｜</span>
+        <a href="#thread/links">LINKS</a><span>｜</span>
+        <a href="#terminal-column">TERMINAL</a>
+      </nav>
+    </header>
+
+    <div class="page-grid">
+      <aside class="sidebar" aria-label="サイトメニュー">
+        <section class="side-box">
+          <h2>■ メニュー</h2>
+          <ul class="folder-menu">
+            <li><a href="#home">01. トップ</a></li>
+            <li><a href="#thread/profile">02. 管理人について</a></li>
+            <li><a href="#thread/works">03. 制作物</a></li>
+            <li><a href="#thread/monaka">04. もなか鯖</a></li>
+            <li><a href="#thread/log">05. 更新記録</a></li>
+            <li><a href="#guestbook">06. 落書き帳</a></li>
+            <li><a href="#thread/links">07. リンク集</a></li>
+            <li><a href="#thread/contact">08. 連絡について</a></li>
+          </ul>
+        </section>
+        <section class="side-box mini-profile">
+          <h2>■ 管理人</h2>
+          <p>名前：YousotuNeet</p>
+          <p>生息地：ネットのどこか</p>
+          <p>趣味：Minecraft / 開発</p>
+          <p>状態：たぶん作業中</p>
+        </section>
+        <section class="side-box">
+          <h2>■ 管理人より</h2>
+          <p>ようこそ。別に大したものはないですが、ゆっくり見てってください。</p>
+          <div class="retro-banner" aria-label="HTML 直書き風のホームページ"><span>HAND MADE</span><strong>HOMEPAGE</strong></div>
+        </section>
+        <section class="side-box shell-tip">
+          <h2>■ おまけ</h2>
+          <p>右側の黒い画面にはコマンドを入力できます。</p>
+          <p><kbd>help</kbd> で一覧、<kbd>/</kbd> ですぐ入力。</p>
+          <button id="focus-terminal" class="old-button" type="button">端末を開く &gt;&gt;</button>
+        </section>
+      </aside>
+
+      <main id="contents" class="main-content" tabindex="-1">
+        <div id="view" aria-live="polite"></div>
+      </main>
+
+      <aside class="terminal-column" id="terminal-column" aria-label="ターミナル">
+        <div class="terminal-outer">
+          <div class="terminal-titlebar">
+            <span><span class="indicator" aria-hidden="true"></span> terminal://homepage</span>
+            <button type="button" id="terminal-toggle" aria-expanded="true" aria-controls="terminal-inner">[ − ]</button>
+          </div>
+          <div class="terminal-inner" id="terminal-inner">
+            <div id="terminal-output" class="terminal-output" role="log" aria-live="polite" aria-relevant="additions"></div>
+            <form class="terminal-prompt" id="terminal-form" autocomplete="off">
+              <label for="terminal-input">guest@YousotuNeet:~$</label>
+              <input id="terminal-input" type="text" spellcheck="false" autocapitalize="off" autocomplete="off" aria-label="コマンドを入力" maxlength="200">
+            </form>
+            <div class="terminal-hint">Enter: 実行 / ↑↓: 履歴 / Tab: 補完</div>
+          </div>
+        </div>
+        <div class="side-box about-terminal">
+          <h2>■ 端末について</h2>
+          <p>これは本物のOSやサーバーに接続する端末ではありません。サイト内専用のコマンドです。</p>
+          <p><button class="link-button" id="terminal-help" type="button">使えるコマンドを見る</button></p>
+        </div>
+      </aside>
+    </div>
+
+    <footer class="site-footer">
+      <span>© <span id="copyright-year">2026</span> YousotuNeet</span>
+      <span>HTML / CSS / JavaScript ・リンクはご自由に</span>
+      <span class="footer-glyph">[ このページは現代のブラウザで動きます ]</span>
+    </footer>
+  </div>
+<script>/*
+ * 編集ポイント：名前・説明・外部リンク・掲示板の内容はこのファイルで管理。
+ * URLを持たない外部リンクは「準備中」と表示されます。
+ * 外部公開前に必ず自分の情報に書き換えてください。
+ */
+window.YN_DATA = {
+  site: {
+    owner: 'YousotuNeet',
+    title: "YousotuNeet のホームページ",
+    description: 'MinecraftとかWebとか。作ったものを置いてます。',
+    updated: '2026.10.19',
+    since: '2026'
+  },
+  links: [
+    { label: 'もなか鯖 公式サイト', url: 'https://monacraft.net', note: '運営しているMinecraftサーバー' },
+    { label: 'GitHub', url: '', note: '自分のプロフィールURLを入力してください' },
+    { label: 'Discord', url: '', note: '公開可能な招待URLまたは連絡先を入力してください' }
+  ],
+  threads: [
+    {
+      id: 'profile', title: '【自己紹介】管理人って何してる人？', category: '自己紹介', date: '2026/10/19',
+      posts: [
+        { subject: 'とりあえず自己紹介', body: [
+          { type: 'p', text: 'YousotuNeetです。Minecraftのサーバー運営をしたり、プラグインやWebのものを作ったりしています。' },
+          { type: 'p', text: '作りたいと思ったものを色々作ってるので、作業内容は結構バラバラです。' }
+        ] },
+        { subject: '好きなもの', body: [
+          { type: 'list', items: ['Minecraft（サーバー運営・プラグイン関係）', 'Discordコミュニティの運営', 'Webサイト・ちょっとしたツール制作', '昔のインターネットっぽいデザイン'] }
+        ] },
+        { subject: 'このサイトについて', body: [
+          { type: 'p', text: '2000年代の掲示板や個人ホームページをイメージしてHTMLで作りました。たまに更新するつもりです。' },
+          { type: 'p', text: '右にある端末も動きます。「help」と打ってみてください。' }
+        ] }
+      ]
+    },
+    {
+      id: 'works', title: '【制作物】作ったもの・作ってるもの', category: '制作物', date: '2026/10/19',
+      posts: [
+        { subject: 'もなか鯖 / MONAKA SERVER', body: [
+          { type: 'p', text: 'Minecraftのサーバーを運営しています。ゲーム内システムの制作や調整、サイト管理などもやっています。' },
+          { type: 'link', text: 'もなか鯖のページを見る', href: '#thread/monaka' }
+        ] },
+        { subject: 'Mona Resource Studio', body: [
+          { type: 'p', text: 'Minecraft向けのリソース関連ツール。必要な機能を考えながら作っているソフトです。' }
+        ] },
+        { subject: 'MonaWatch Echo', body: [
+          { type: 'p', text: 'Minecraftサーバーの状態監視と音声通知を組み合わせる開発プロジェクト。Webのデバッグパネルなども構想しています。' },
+          { type: 'small', text: '※ 開発・検討中の内容を含みます。' }
+        ] },
+        { subject: 'Minecraftプラグイン', body: [
+          { type: 'p', text: 'MonaToolsなど、サーバーに必要な独自機能を色々作っています。' }
+        ] },
+        { subject: 'その他', body: [
+          { type: 'p', text: 'WebページやDiscord関連の仕組みなど。まとまったらこのスレッドに追加します。' }
+        ] }
+      ]
+    },
+    {
+      id: 'monaka', title: '【Minecraft】もなか鯖について', category: 'Minecraft', date: '2026/10/19',
+      posts: [
+        { subject: 'サーバーのこと', body: [
+          { type: 'p', text: 'もなか鯖（MONAKA SERVER）は、自分が運営しているMinecraftサーバーです。Java版・統合版の両方を対象にしています。' },
+          { type: 'p', text: '既存のゲーム要素に加えて、独自のプラグインやコンテンツを色々追加しています。' }
+        ] },
+        { subject: 'どんなことをしてるの？', body: [
+          { type: 'list', items: ['サーバー・ネットワークの運営と保守', 'ゲーム内の独自システムやプラグイン制作', 'イベント、経済、各種コンテンツの設計', 'Webサイトや運営ツールの整備'] }
+        ] },
+        { subject: '公式サイト', body: [
+          { type: 'link', text: 'monacraft.net', href: 'https://monacraft.net' }
+        ] }
+      ]
+    },
+    {
+      id: 'log', title: '【更新履歴】このサイトの更新メモ', category: '日記', date: '2026/10/19',
+      posts: [
+        { subject: '2026/10/19', body: [
+          { type: 'p', text: '個人ホームページを作り直し。掲示板みたいなUIとターミナルを合体させてみました。' },
+          { type: 'p', text: '公開用の文章やリンクは少しずつ追加予定。' }
+        ] }
+      ]
+    },
+    {
+      id: 'links', title: '【リンク集】ほかの場所はこちら', category: 'リンク', date: '2026/10/19',
+      posts: [
+        { subject: '関連リンク', body: [{ type: 'dynamic-links' }] },
+        { subject: 'リンクについて', body: [
+          { type: 'p', text: 'このサイトへのリンクはご自由にどうぞ。外部リンクは準備ができたものから追加していきます。' }
+        ] }
+      ]
+    },
+    {
+      id: 'contact', title: '【連絡先】管理人に連絡したい場合', category: '連絡', date: '2026/10/19',
+      posts: [
+        { subject: '連絡について', body: [
+          { type: 'p', text: '連絡先は公開範囲を確認してから載せる予定です。関連リンクも参照してください。' },
+          { type: 'link', text: 'リンク集へ', href: '#thread/links' }
+        ] }
+      ]
+    }
+  ]
+};
+</script><script>(() => {
+  'use strict';
+  const DATA = window.YN_DATA;
+  if (!DATA) return;
+
+  const $ = (selector, parent = document) => parent.querySelector(selector);
+  const make = (tag, className = '', text = null) => {
+    const node = document.createElement(tag);
+    if (className) node.className = className;
+    if (text !== null) node.textContent = String(text);
+    return node;
+  };
+  const append = (parent, ...children) => { children.forEach(child => parent.append(child)); return parent; };
+  const link = (title, href) => {
+    const node = make('a', '', title);
+    if (href.startsWith('#') || /^https:\/\//i.test(href)) {
+      node.href = href;
+      if (/^https:\/\//i.test(href)) {
+        node.target = '_blank';
+        node.rel = 'noopener noreferrer';
+      }
+    }
+    return node;
+  };
+  const view = $('#view');
+  const content = $('#contents');
+  const store = {
+    get(key, fallback) { try { const val = localStorage.getItem(key); return val === null ? fallback : JSON.parse(val); } catch { return fallback; } },
+    set(key, val) { try { localStorage.setItem(key, JSON.stringify(val)); return true; } catch { return false; } }
+  };
+
+  function setupHeader() {
+    $('#site-description').textContent = DATA.site.description;
+    $('#site-updated').textContent = DATA.site.updated;
+    $('#copyright-year').textContent = DATA.site.since;
+    const visits = Math.max(0, Number(store.get('yn.visits.v1', 0)) || 0) + 1;
+    store.set('yn.visits.v1', visits);
+    $('#visit-counter').textContent = String(visits).padStart(6, '0');
+    function updateClock() {
+      const now = new Date();
+      const fmt = new Intl.DateTimeFormat('ja-JP', { year: 'numeric', month: '2-digit', day: '2-digit', hour: '2-digit', minute: '2-digit', hour12: false });
+      $('#clock').textContent = fmt.format(now);
+    }
+    updateClock();
+    setInterval(updateClock, 30000);
+  }
+
+  function paper() { return make('section', 'paper'); }
+  function breadcrumb(...parts) {
+    const p = make('p', 'location');
+    append(p, link('YousotuNeet HOME', '#home'));
+    for (const part of parts) append(p, document.createTextNode(' / ' + part));
+    return p;
+  }
+  function heading(text) { return make('h2', 'board-title', text); }
+  function sectionHeading(text) { return make('h3', 'section-title', text); }
+  function renderNeetHome() {
+    view.replaceChildren();
+    const panel = paper();
+    panel.classList.add('neet-index');
+    append(panel, breadcrumb('個人板', 'スレッド一覧'));
+    panel.append(make('h2', 'neet-index-title', 'YousotuNeetちゃんねる＠個人板'));
+    panel.append(make('p', 'neet-board-description', 'Minecraft、Web、制作物、あと適当な雑記。管理人が一人で書いている謎の板です。'));
+    const bar = make('div', 'neet-index-bar', '■ スレッド一覧 ■');
+    panel.append(bar);
+    const search = make('div', 'bbs-search');
+    const label = make('label', '', 'スレッド検索：'); label.htmlFor = 'thread-search';
+    const input = make('input'); input.type = 'search'; input.id = 'thread-search'; input.placeholder = '検索ワード';
+    append(search, label, input);
+    panel.append(search);
+    const list = make('ol', 'neet-thread-list');
+    DATA.threads.forEach(thread => {
+      const li = make('li');
+      li.dataset.search = `${thread.title} ${thread.category}`.toLowerCase();
+      append(li, link(thread.title, '#thread/' + thread.id), document.createTextNode(` (${thread.posts.length})`));
+      list.append(li);
+    });
+    panel.append(list);
+    const count = make('p', 'neet-index-count', `${DATA.threads.length} スレッドを表示中`);
+    input.addEventListener('input', () => {
+      let visible = 0;
+      for (const li of list.children) {
+        li.hidden = !li.dataset.search.includes(input.value.trim().toLowerCase());
+        if (!li.hidden) visible++;
+      }
+      count.textContent = `${visible} スレッドを表示中`;
+    });
+    panel.append(count);
+    panel.append(make('div', 'neet-index-bar', '■ 板の案内 ■'));
+    const guide = make('p', 'neet-guide');
+    append(guide, document.createTextNode('名無しさん歓迎。ここは公開掲示板ではありません。  '),
+      link('管理人のプロフィール', '#thread/profile'), document.createTextNode(' / '),
+      link('落書き帳（ローカル）', '#guestbook'), document.createTextNode(' / '),
+      link('端末はこちら', '#terminal-column'));
+    panel.append(guide);
+    view.append(panel);
+    document.title = 'YousotuNeetちゃんねる - 個人板';
+  }
+
+  function renderHome() {
+    if (neetInstalled) return renderNeetHome();
+    view.replaceChildren();
+    const top = paper();
+    append(top, breadcrumb('スレッド一覧'), heading('ようこそ。'),
+      make('p', 'board-intro', 'このページは YousotuNeet の個人サイトです。自己紹介とか制作物とか、適当にまとめています。'));
+    const note = make('div', 'notice');
+    append(note, make('strong', '', 'お知らせ：'), document.createTextNode(' このサイトは制作中です。リンク先や内容は随時追加していきます。'));
+    top.append(note, sectionHeading('スレッド一覧'));
+    const search = make('div', 'bbs-search');
+    const label = make('label', '', 'タイトル検索：');
+    label.htmlFor = 'thread-search';
+    const input = make('input');
+    input.type = 'search'; input.id = 'thread-search'; input.placeholder = '例：制作物、もなか鯖';
+    append(search, label, input);
+    top.append(search);
+    const table = make('table', 'bbs-table');
+    const caption = make('caption', '', '■ 板名：YousotuNeet / 個人ページ（書き込みは管理人のみ）');
+    const thead = make('thead');
+    const headerRow = make('tr');
+    [['No.', ''], ['スレッドタイトル', ''], ['レス', 'col-count'], ['掲載日', 'col-date']].forEach(([name, cls]) => {
+      const th = make('th', cls, name); th.scope = 'col'; headerRow.append(th);
+    });
+    append(thead, headerRow);
+    const tbody = make('tbody');
+    DATA.threads.forEach((thread, i) => {
+      const tr = make('tr');
+      tr.dataset.search = `${thread.title} ${thread.category}`.toLowerCase();
+      const index = make('td', '', i + 1);
+      const title = make('td');
+      append(title, link(thread.title, '#thread/' + thread.id), make('span', 'category', '[' + thread.category + ']'));
+      const count = make('td', 'col-count', thread.posts.length);
+      const date = make('td', 'col-date', thread.date);
+      append(tr, index, title, count, date);
+      tbody.append(tr);
+    });
+    append(table, caption, thead, tbody);
+    const results = make('p', 'bbs-bottom', `${DATA.threads.length} スレッド / タイトルをクリックして読む`);
+    input.addEventListener('input', () => {
+      let found = 0;
+      for (const tr of tbody.children) {
+        const shown = tr.dataset.search.includes(input.value.trim().toLowerCase());
+        tr.hidden = !shown;
+        if (shown) found++;
+      }
+      results.textContent = `${found} スレッド表示中`;
+    });
+    top.append(table, results);
+    const more = paper();
+    more.append(sectionHeading('はじめて来た人へ'));
+    const ul = make('ul', 'latest-list');
+    [
+      ['管理人の自己紹介を読む', '#thread/profile'],
+      ['今までに作ったものを見る', '#thread/works'],
+      ['ターミナルで遊ぶ（右側かページ下部）', '#terminal-column'],
+      ['落書き帳を試す（このブラウザのみ）', '#guestbook']
+    ].forEach(([title, target]) => { const li = make('li'); li.append(link(title, target)); ul.append(li); });
+    more.append(ul);
+    more.append(make('p', 'small-print', '※ 全ページ、静的なHTML・CSS・JavaScriptで動作します。外部への送信はしていません。'));
+    view.append(top, more);
+    document.title = "TOP - YousotuNeet's Home Page";
+  }
+
+  function renderPostBlock(postBody) {
+    const wrapper = make('div', 'post-body');
+    for (const block of postBody) {
+      if (block.type === 'p') wrapper.append(make('p', '', block.text));
+      else if (block.type === 'small') wrapper.append(make('p', 'small-print', block.text));
+      else if (block.type === 'list') {
+        const ul = make('ul');
+        for (const text of block.items) ul.append(make('li', '', text));
+        wrapper.append(ul);
+      } else if (block.type === 'link') {
+        const p = make('p', 'link-line');
+        append(p, document.createTextNode('→ '), link(block.text, block.href));
+        wrapper.append(p);
+      } else if (block.type === 'dynamic-links') {
+        for (const record of DATA.links) {
+          const p = make('p', 'link-line');
+          p.append(document.createTextNode('・'));
+          if (record.url && /^https:\/\//i.test(record.url)) p.append(link(record.label, record.url));
+          else p.append(make('span', '', record.label + '（準備中）'));
+          p.append(document.createTextNode(' — ' + record.note));
+          wrapper.append(p);
+        }
+      }
+    }
+    return wrapper;
+  }
+
+  function renderThread(id) {
+    const thread = DATA.threads.find(t => t.id === id);
+    if (!thread) return renderNotFound();
+    view.replaceChildren();
+    const board = paper();
+    const top = make('div', 'thread-top');
+    append(top, breadcrumb('スレッド', thread.category), make('h2', '', thread.title),
+      make('div', 'thread-meta', `${thread.posts.length}レス / このサイトへの掲載日：${thread.date} / 管理人が投稿`));
+    board.append(top);
+    thread.posts.forEach((post, i) => {
+      const el = make('article', 'post'); el.id = `post-${i + 1}`;
+      const head = make('div', 'post-head');
+      append(head, make('span', 'post-num', `${i + 1}`), document.createTextNode(' ：'),
+        make('span', 'post-author', 'YousotuNeet ◆管理人'),
+        document.createTextNode(`：${thread.date} `), make('span', 'post-id', 'ID:owner'));
+      append(el, head, make('div', 'post-subject', post.subject), renderPostBlock(post.body));
+      board.append(el);
+    });
+    const foot = make('p', 'thread-footnote', '— このスレッドへの投稿は管理人が編集しています。');
+    const back = make('p', 'inline-links');
+    append(back, link('▲ スレッド一覧へ戻る', '#home'), make('span', 'link-dot', '|'), link('関連：落書き帳', '#guestbook'));
+    board.append(foot, back);
+    view.append(board);
+    document.title = `${thread.title} - YousotuNeet`;
+  }
+
+  const GUEST_KEY = 'yn.guestbook.v1';
+  function getEntries() {
+    const entries = store.get(GUEST_KEY, []);
+    return Array.isArray(entries) ? entries.filter(x => x && typeof x.name === 'string' && typeof x.message === 'string').slice(0, 30) : [];
+  }
+  function renderGuestbook() {
+    view.replaceChildren();
+    const board = paper();
+    append(board, breadcrumb('落書き帳'), heading('落書き帳（試作）'));
+    const note = make('div', 'notice');
+    append(note, make('strong', '', '重要：'), document.createTextNode(' これはローカル版です。書き込みはこのブラウザ内にのみ保存され、他の人には公開されません。'));
+    board.append(note, make('p', 'board-intro', '昔のホームページにありがちな一言掲示板。バックエンドなしで雰囲気だけ体験できます。'));
+    const form = make('form', 'entry-form');
+    const nameLabel = make('label', '', '名前（20文字まで）'); nameLabel.htmlFor = 'bbs-name';
+    const name = make('input'); name.type = 'text'; name.id = 'bbs-name'; name.maxLength = 20; name.required = true; name.placeholder = '名無しさん';
+    const msgLabel = make('label', '', 'ひとこと（240文字まで）'); msgLabel.htmlFor = 'bbs-message';
+    const msg = make('textarea'); msg.id = 'bbs-message'; msg.maxLength = 240; msg.required = true; msg.placeholder = '記念カキコ';
+    const actions = make('div', 'entry-actions');
+    const submit = make('button', '', '書き込む'); submit.type = 'submit';
+    const clear = make('button', '', 'ローカルの書き込みを消す'); clear.type = 'button';
+    append(actions, submit, clear);
+    append(form, nameLabel, name, msgLabel, msg, actions);
+    const error = make('p', 'small-print'); error.setAttribute('role', 'status');
+    const entriesHeading = sectionHeading('書き込み一覧');
+    const list = make('ol', 'entry-list');
+    function paintEntries() {
+      list.replaceChildren();
+      const entries = getEntries();
+      if (!entries.length) { list.append(make('li', '', 'まだ書き込みはありません。')); return; }
+      entries.forEach((record, index) => {
+        const li = make('li');
+        append(li, make('div', 'entry-meta', `${entries.length - index} ：${record.name}：${record.date || ''}`), make('p', '', record.message));
+        list.append(li);
+      });
+    }
+    form.addEventListener('submit', event => {
+      event.preventDefault();
+      const username = name.value.trim() || '名無しさん';
+      const message = msg.value.trim();
+      if (!message) { error.textContent = '本文を入力してください。'; return; }
+      const entries = getEntries();
+      entries.unshift({ name: username.slice(0, 20), message: message.slice(0, 240), date: new Date().toLocaleString('ja-JP') });
+      if (!store.set(GUEST_KEY, entries.slice(0, 30))) { error.textContent = 'この環境では保存できませんでした。ブラウザの設定をご確認ください。'; return; }
+      error.textContent = 'このブラウザ内に保存しました。'; msg.value = ''; paintEntries();
+    });
+    clear.addEventListener('click', () => {
+      if (!getEntries().length) { error.textContent = '消す書き込みはありません。'; return; }
+      if (window.confirm('このブラウザに保存された書き込みをすべて消しますか？')) {
+        store.set(GUEST_KEY, []); error.textContent = '削除しました。'; paintEntries();
+      }
+    });
+    paintEntries();
+    board.append(form, error, entriesHeading, list);
+    view.append(board);
+    document.title = '落書き帳 - YousotuNeet';
+  }
+
+  function renderNotFound() {
+    view.replaceChildren();
+    const panel = paper();
+    append(panel, breadcrumb('404'), heading('ページがありません'),
+      make('p', '', '指定されたページは見つかりませんでした。'), link('トップページに戻る', '#home'));
+    view.append(panel);
+    document.title = '404 - YousotuNeet';
+  }
+
+  function currentRoute() {
+    const hash = decodeURIComponent(window.location.hash.slice(1));
+    if (hash === 'guestbook') return { type: 'guestbook', id: 'guestbook' };
+    if (hash.startsWith('thread/')) return { type: 'thread', id: hash.slice(7) };
+    return { type: 'home', id: 'home' };
+  }
+  function route() {
+    const { type, id } = currentRoute();
+    if (type === 'thread') renderThread(id);
+    else if (type === 'guestbook') renderGuestbook();
+    else renderHome();
+    for (const a of document.querySelectorAll('.top-links a, .folder-menu a')) {
+      const href = a.getAttribute('href');
+      const selected = href === '#' + (type === 'home' ? 'home' : type === 'guestbook' ? 'guestbook' : 'thread/' + id);
+      if (selected) a.setAttribute('aria-current', 'page');
+      else a.removeAttribute('aria-current');
+    }
+    if (document.readyState === 'complete' || document.readyState === 'interactive') {
+      if (location.hash && location.hash !== '#terminal-column') content.scrollIntoView({ block: 'start' });
+    }
+  }
+
+  // ターミナル：文字列を textContent で表示し、コマンド以外は解釈しない。
+  const output = $('#terminal-output');
+  const terminalInput = $('#terminal-input');
+  const terminalForm = $('#terminal-form');
+  const terminalInner = $('#terminal-inner');
+  const terminalToggle = $('#terminal-toggle');
+  const commands = ['help', 'apt', 'whoami', 'pwd', 'ls', 'cat', 'open', 'bbs', 'projects', 'status', 'neofetch', 'history', 'theme', 'date', 'clear', 'mona', 'sudo', 'exit'];
+  const commandHistory = [];
+  let historyIndex = 0;
+  let bootTime = Date.now();
+  let isClosed = false;
+  let isRoot = false;
+  let neetInstalled = store.get('yn.neet.installed.v1', false) === true;
+  document.body.classList.toggle('neet-installed', neetInstalled);
+  const promptLabel = $('#terminal-form label');
+  const secretFile = [
+    '=================================================',
+    '         /root/secret.txt  [TOP SECRET]',
+    '=================================================',
+    '1 ：YousotuNeet ◆管理人：2026/10/19(月)',
+    '実はこのサイト、管理人の趣味が詰まっただけの',
+    '個人ホームページです。大した秘密はありません。',
+    '',
+    '2 ：名無しさん：2026/10/19(月)',
+    '>>1 それ秘密って言うのか？',
+    '',
+    '3 ：root：2026/10/19(月)',
+    '隠しコマンド：sudo apt install neet',
+    '元に戻すなら：sudo apt remove neet',
+    '================================================='
+  ].join('\n');
+
+  function refreshPrompt() {
+    promptLabel.textContent = isRoot ? 'root@YousotuNeet:/#' : 'guest@YousotuNeet:~$';
+  }
+  function setNeetInstalled(install) {
+    neetInstalled = install;
+    document.body.classList.toggle('neet-installed', install);
+    const persisted = store.set('yn.neet.installed.v1', install);
+    route();
+    if (install) requestAnimationFrame(() => $('#terminal-column').scrollIntoView({ block: 'nearest' }));
+    return persisted;
+  }
+  function aptCommand(args, elevated) {
+    if (!elevated) {
+      line('E: ロックファイルを開けません。管理者権限が必要です（sudo apt ...）。', 'error');
+      return;
+    }
+    if (args.length !== 2 || !['install', 'remove'].includes(args[0].toLowerCase()) || args[1].toLowerCase() !== 'neet') {
+      line('使用方法：sudo apt install neet / sudo apt remove neet', 'muted');
+      return;
+    }
+    const isInstall = args[0].toLowerCase() === 'install';
+    lines('パッケージリストを読み込んでいます... 完了\n依存関係ツリーを作成しています... 完了');
+    if (neetInstalled === isInstall) {
+      line(isInstall ? 'neet はすでに最新バージョンです。' : 'パッケージ neet はインストールされていません。', 'muted');
+      return;
+    }
+    if (isInstall) {
+      lines('以下のパッケージが新たにインストールされます:\n  neet 2ch-layout bbs-skin');
+      lines('取得:1 homepage://retro neet 2.0.0 [4,096 B]\nneet (2.0.0) を展開しています...\nneet (2.0.0) を設定しています...');
+      const persisted = setNeetInstalled(true);
+      line('完了。YousotuNeetちゃんねる に切り替わりました。', 'accent');
+      line(persisted ? '※ 保存済み：リロードしても 2ch UI のままです。' : '※ このブラウザでは設定を保存できませんでした。再読み込みで元に戻ります。', 'muted');
+    } else {
+      lines('neet (2.0.0) を削除しています...\n古い掲示板スキンを復旧しています...');
+      setNeetInstalled(false);
+      line('完了。標準BBS＋ターミナルUIに戻りました。', 'accent');
+    }
+  }
+
+  function printFile(filename, elevated) {
+    const files = {
+      'profile.txt': 'YousotuNeet\nMinecraft / サーバー運営 / 開発\nこのサイトは自己紹介用の個人ホームページです。',
+      'projects.txt': 'もなか鯖\nMona Resource Studio\nMonaWatch Echo（開発中）\nMinecraft向け独自プラグイン\n詳細：open works',
+      'readme.txt': 'This page is made with plain HTML, CSS and JavaScript.\nNo real shell access. Just a tiny personal homepage.',
+      'changelog.txt': '2026/10/19 - BBS + Terminal UI の制作\n2026/10/19 - neet パッケージと 2ch UI 追加'
+    };
+    if (!filename) line('使い方：cat profile.txt', 'muted');
+    else if (filename === '/root/secret.txt') {
+      if (elevated) lines(secretFile, 'accent');
+      else line('cat: /root/secret.txt: Permission denied', 'error');
+    } else if (Object.prototype.hasOwnProperty.call(files, filename)) lines(files[filename]);
+    else line(`cat: ${filename}: ファイルが見つかりません`, 'error');
+  }
+
+  function runSudo(args) {
+    const sub = (args[0] || '').toLowerCase();
+    if (!sub) { line('sudo: 使用方法 sudo su / sudo cat /root/secret.txt / sudo apt install neet', 'muted'); return; }
+    if (sub === 'su' && args.length === 1) {
+      if (isRoot) { line('すでにrootです。', 'muted'); return; }
+      isRoot = true; refreshPrompt();
+      lines('[疑似認証 OK] root シェルを開始しました。\n※ ブラウザ内の演出です。実際の権限は変更されません。', 'accent');
+    } else if (sub === 'cat') {
+      printFile(args[1], true);
+    } else if (sub === 'apt') {
+      aptCommand(args.slice(1), true);
+    } else if (sub === '-k' && args.length === 1) {
+      isRoot = false; refreshPrompt(); line('root モードを解除しました。', 'muted');
+    } else {
+      line(`sudo: ${sub}: サポートしていないコマンドです`, 'error');
+    }
+  }
+
+  function line(text = '', cls = '') {
+    const el = make('div', 'terminal-line' + (cls ? ' ' + cls : ''), text);
+    output.append(el);
+    while (output.children.length > 210) output.firstChild.remove();
+    output.scrollTop = output.scrollHeight;
+  }
+  function lines(text, cls = '') { String(text).split('\n').forEach(part => line(part, cls)); }
+  function focusTerminal() {
+    setClosed(false);
+    $('#terminal-column').scrollIntoView({ block: 'nearest' });
+    terminalInput.focus({ preventScroll: true });
+  }
+  function setClosed(value) {
+    isClosed = value;
+    terminalInner.hidden = value;
+    terminalToggle.setAttribute('aria-expanded', String(!value));
+    terminalToggle.textContent = value ? '[ + ]' : '[ − ]';
+  }
+  function goTo(target) {
+    const normalized = (target || '').replace(/^#/, '').replace(/^thread\//, '').toLowerCase();
+    if (normalized === 'home' || normalized === 'top') location.hash = '#home';
+    else if (normalized === 'bbs' || normalized === 'guestbook') location.hash = '#guestbook';
+    else if (normalized === 'projects') location.hash = '#thread/works';
+    else if (DATA.threads.some(thread => thread.id === normalized)) location.hash = '#thread/' + normalized;
+    else { line(`open: ${target}: 該当するページがありません`, 'error'); return; }
+    line(`=> #${location.hash.slice(1)} を開きました`, 'muted');
+    if (location.hash === '#home' && currentRoute().type === 'home') route();
+  }
+  function execute(raw) {
+    const text = raw.trim();
+    if (!text) return;
+    line((isRoot ? 'root@YousotuNeet:/# ' : 'guest@YousotuNeet:~$ ') + text, 'command');
+    const parts = text.split(/\s+/);
+    const command = parts.shift().toLowerCase();
+    const args = parts;
+    switch (command) {
+      case 'help':
+        lines('使用できるコマンド：\n  help                一覧を表示\n  whoami              管理人について\n  ls                  ファイル一覧\n  cat <ファイル名>     ファイルを読む\n  open <ページ名>     ページを開く\n  status / neofetch   情報を表示\n  theme <classic|amber|green>\n  sudo su             疑似rootモード\n  sudo cat /root/secret.txt  隠しファイル\n  sudo apt install neet     2ch風UIを導入\n  sudo apt remove neet      元のUIに戻す\n  exit                rootを抜ける／端末を閉じる\n  history / clear / date / pwd');
+        break;
+      case 'whoami':
+        lines('YousotuNeet\nMinecraftのサーバー運営、Web、プラグイン制作などをしています。\n詳しくは `open profile`'); break;
+      case 'pwd': line('/home/YousotuNeet'); break;
+      case 'ls': lines('profile.txt  projects.txt  readme.txt  changelog.txt\nboards/      guestbook/' + (isRoot ? '      /root/secret.txt' : '')); break;
+      case 'cat': printFile(args[0], isRoot); break;
+      case 'open':
+        if (!args[0]) line('使い方：open profile / works / monaka / log / links / contact / bbs / home', 'muted');
+        else goTo(args[0]); break;
+      case 'projects': goTo('works'); break;
+      case 'bbs': goTo('bbs'); break;
+      case 'status':
+        lines(`SITE:  YousotuNeet's Home Page\nMODE:  static / local browser\nUSER:  ${isRoot ? 'root (simulated)' : 'guest'}\nNEET:  ${neetInstalled ? 'installed / 2ch UI' : 'not installed'}\nBOOT:  ${Math.floor((Date.now() - bootTime)/1000)} sec ago\nTHEME: ${document.body.dataset.termTheme || 'classic'}\nNET:   サーバー接続なし`); break;
+      case 'neofetch':
+        lines('  /\\_/\\  YousotuNeet@homepage\n ( o.o ) ---------------------\n  > ^ <   OS: Personal Website\n          UI: BBS / early 2000s\n          Shell: JavaScript\n          Hobbies: Minecraft, Web', 'accent'); break;
+      case 'history':
+        if (!commandHistory.length) line('(履歴はありません)', 'muted');
+        else commandHistory.slice(-15).forEach((item, i) => line(`${i + 1}  ${item}`)); break;
+      case 'date': line(new Date().toLocaleString('ja-JP')); break;
+      case 'theme': {
+        const name = (args[0] || '').toLowerCase();
+        if (!['classic', 'amber', 'green'].includes(name)) { line('theme classic | amber | green', 'muted'); break; }
+        document.body.classList.remove('theme-amber', 'theme-green');
+        if (name !== 'classic') document.body.classList.add('theme-' + name);
+        document.body.dataset.termTheme = name;
+        store.set('yn.theme.v1', name);
+        line(`theme: ${name}`, 'accent'); break;
+      }
+      case 'mona': lines('   /\\_/\\\n  (=^･ω･^=)  MONAKA!\n   ( _  _)\nもっと見るなら `open monaka`', 'accent'); break;
+      case 'sudo': runSudo(args); break;
+      case 'apt': aptCommand(args, isRoot); break;
+      case 'clear': output.replaceChildren(); break;
+      case 'exit':
+        if (isRoot) { isRoot = false; refreshPrompt(); line('logout: guest に戻りました。', 'muted'); }
+        else { line('接続を終了しました（ウィンドウは [+] から戻せます）', 'muted'); setClosed(true); }
+        break;
+      default: line(`${command}: command not found. ` + 'help と入力してください', 'error');
+    }
+  }
+  terminalForm.addEventListener('submit', event => {
+    event.preventDefault();
+    const value = terminalInput.value;
+    if (value.trim()) { commandHistory.push(value.trim()); if (commandHistory.length > 100) commandHistory.shift(); execute(value); }
+    historyIndex = commandHistory.length;
+    terminalInput.value = '';
+  });
+  terminalInput.addEventListener('keydown', event => {
+    if (event.key === 'ArrowUp') {
+      event.preventDefault(); if (commandHistory.length) { historyIndex = Math.max(0, historyIndex - 1); terminalInput.value = commandHistory[historyIndex]; }
+    } else if (event.key === 'ArrowDown') {
+      event.preventDefault(); if (commandHistory.length) { historyIndex = Math.min(commandHistory.length, historyIndex + 1); terminalInput.value = commandHistory[historyIndex] || ''; }
+    } else if (event.key === 'Tab') {
+      event.preventDefault();
+      const raw = terminalInput.value;
+      if (!raw.includes(' ')) {
+        const matches = commands.filter(cmd => cmd.startsWith(raw.toLowerCase()));
+        if (matches.length === 1) terminalInput.value = matches[0] + ' ';
+        else if (matches.length > 1) line(matches.join('  '), 'muted');
+      } else if (raw.toLowerCase().startsWith('sudo ')) {
+        const options = ['sudo su', 'sudo cat /root/secret.txt', 'sudo apt install neet', 'sudo apt remove neet'];
+        const matches = options.filter(option => option.startsWith(raw.toLowerCase()));
+        if (matches.length === 1) terminalInput.value = matches[0];
+        else if (matches.length > 1) line(matches.join('\n'), 'muted');
+      }
+    }
+  });
+  terminalToggle.addEventListener('click', () => { setClosed(!isClosed); if (!isClosed) terminalInput.focus(); });
+  $('#terminal-help').addEventListener('click', () => { focusTerminal(); execute('help'); });
+  $('#focus-terminal').addEventListener('click', focusTerminal);
+  document.addEventListener('keydown', event => {
+    const tag = event.target.tagName;
+    const typing = /^(INPUT|TEXTAREA|SELECT)$/.test(tag) || event.target.isContentEditable;
+    if (event.altKey && event.key.toLowerCase() === 't') { event.preventDefault(); focusTerminal(); }
+    else if (!typing && !event.metaKey && !event.ctrlKey && !event.altKey && event.key === '/') { event.preventDefault(); focusTerminal(); }
+    else if (event.key === 'Escape' && document.activeElement === terminalInput) terminalInput.blur();
+  });
+  const savedTheme = store.get('yn.theme.v1', 'classic');
+  if (savedTheme === 'amber' || savedTheme === 'green') { document.body.classList.add('theme-' + savedTheme); document.body.dataset.termTheme = savedTheme; }
+  refreshPrompt();
+  lines('YousotuNeet Terminal  [web edition]\n(C) 2026 YousotuNeet\n-----------------------------------', 'accent');
+  lines('guest session started.\n`help` で一覧 / `sudo apt install neet` で2ch風UIへ\n');
+  bootTime = Date.now();
+  setupHeader();
+  window.addEventListener('hashchange', () => {
+    if (location.hash === '#terminal-column') { setClosed(false); return; }
+    route();
+  });
+  route();
+})();
+</script></body>
+</html>

@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#edeae0">
+  <meta name="description" content="YousotuNeet の個人ホームページ。Minecraft、制作物、雑記など。">
+  <title>YousotuNeet's Home Page</title>
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="styles.css">
+  <script src="data.js" defer></script>
+  <script src="app.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#contents">本文へ移動</a>
+  <div class="site-shell">
+    <header class="masthead">
+      <div class="top-notice"><span>個人ホームページ / PERSONAL WEB PAGE</span><span class="clock" id="clock">----/--/-- --:--</span></div>
+      <div class="neet-board-header" aria-label="YousotuNeetちゃんねる">
+        <div class="neet-board-name">YousotuNeetちゃんねる</div>
+        <div class="neet-board-tagline">～ 管理人の趣味と制作物を勝手に語る板 ～</div>
+        <p>ここは YousotuNeet の個人サイトです。実際の2chとは無関係です。</p>
+      </div>
+      <div class="title-row">
+        <div class="title-main">
+          <div class="site-stamp" aria-hidden="true">Y<span>N</span></div>
+          <div>
+            <p class="micro">■ ようこそ ■</p>
+            <h1>YousotuNeet <span class="title-suffix">のホームページ</span></h1>
+            <p class="description" id="site-description">MinecraftとかWebとか。作ったものを置いてます。</p>
+          </div>
+        </div>
+        <div class="header-meta">
+          <div>管理人：<strong>YousotuNeet</strong></div>
+          <div>更新日：<time id="site-updated">2026.10.19</time></div>
+          <div>このブラウザでの訪問：<output id="visit-counter">000001</output> 回</div>
+        </div>
+      </div>
+      <nav class="top-links" aria-label="上部ナビゲーション">
+        <a href="#home">TOP</a><span>｜</span>
+        <a href="#thread/profile">PROFILE</a><span>｜</span>
+        <a href="#thread/works">WORKS</a><span>｜</span>
+        <a href="#thread/log">DIARY</a><span>｜</span>
+        <a href="#guestbook">BBS</a><span>｜</span>
+        <a href="#thread/links">LINKS</a><span>｜</span>
+        <a href="#terminal-column">TERMINAL</a>
+      </nav>
+    </header>
+
+    <div class="page-grid">
+      <aside class="sidebar" aria-label="サイトメニュー">
+        <section class="side-box">
+          <h2>■ メニュー</h2>
+          <ul class="folder-menu">
+            <li><a href="#home">01. トップ</a></li>
+            <li><a href="#thread/profile">02. 管理人について</a></li>
+            <li><a href="#thread/works">03. 制作物</a></li>
+            <li><a href="#thread/monaka">04. もなか鯖</a></li>
+            <li><a href="#thread/log">05. 更新記録</a></li>
+            <li><a href="#guestbook">06. 落書き帳</a></li>
+            <li><a href="#thread/links">07. リンク集</a></li>
+            <li><a href="#thread/contact">08. 連絡について</a></li>
+          </ul>
+        </section>
+        <section class="side-box mini-profile">
+          <h2>■ 管理人</h2>
+          <p>名前：YousotuNeet</p>
+          <p>生息地：ネットのどこか</p>
+          <p>趣味：Minecraft / 開発</p>
+          <p>状態：たぶん作業中</p>
+        </section>
+        <section class="side-box">
+          <h2>■ 管理人より</h2>
+          <p>ようこそ。別に大したものはないですが、ゆっくり見てってください。</p>
+          <div class="retro-banner" aria-label="HTML 直書き風のホームページ"><span>HAND MADE</span><strong>HOMEPAGE</strong></div>
+        </section>
+        <section class="side-box shell-tip">
+          <h2>■ おまけ</h2>
+          <p>右側の黒い画面にはコマンドを入力できます。</p>
+          <p><kbd>help</kbd> で一覧、<kbd>/</kbd> ですぐ入力。</p>
+          <button id="focus-terminal" class="old-button" type="button">端末を開く &gt;&gt;</button>
+        </section>
+      </aside>
+
+      <main id="contents" class="main-content" tabindex="-1">
+        <div id="view" aria-live="polite"></div>
+      </main>
+
+      <aside class="terminal-column" id="terminal-column" aria-label="ターミナル">
+        <div class="terminal-outer">
+          <div class="terminal-titlebar">
+            <span><span class="indicator" aria-hidden="true"></span> terminal://homepage</span>
+            <button type="button" id="terminal-toggle" aria-expanded="true" aria-controls="terminal-inner">[ − ]</button>
+          </div>
+          <div class="terminal-inner" id="terminal-inner">
+            <div id="terminal-output" class="terminal-output" role="log" aria-live="polite" aria-relevant="additions"></div>
+            <form class="terminal-prompt" id="terminal-form" autocomplete="off">
+              <label for="terminal-input">guest@YousotuNeet:~$</label>
+              <input id="terminal-input" type="text" spellcheck="false" autocapitalize="off" autocomplete="off" aria-label="コマンドを入力" maxlength="200">
+            </form>
+            <div class="terminal-hint">Enter: 実行 / ↑↓: 履歴 / Tab: 補完</div>
+          </div>
+        </div>
+        <div class="side-box about-terminal">
+          <h2>■ 端末について</h2>
+          <p>これは本物のOSやサーバーに接続する端末ではありません。サイト内専用のコマンドです。</p>
+          <p><button class="link-button" id="terminal-help" type="button">使えるコマンドを見る</button></p>
+        </div>
+      </aside>
+    </div>
+
+    <footer class="site-footer">
+      <span>© <span id="copyright-year">2026</span> YousotuNeet</span>
+      <span>HTML / CSS / JavaScript ・リンクはご自由に</span>
+      <span class="footer-glyph">[ このページは現代のブラウザで動きます ]</span>
+    </footer>
+  </div>
+</body>
+</html>

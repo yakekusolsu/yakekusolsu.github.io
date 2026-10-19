@@ -1,0 +1,311 @@
+/* YousotuNeet's Home Page | 2000s BBS + terminal */
+:root {
+  color-scheme: light;
+  --page: #efeee6;
+  --paper: #faf9f2;
+  --panel: #e8e6dc;
+  --ink: #2c2b26;
+  --sub: #5a594f;
+  --line: #aaa89b;
+  --line-strong: #7f7f74;
+  --blue: #15458b;
+  --visited: #684584;
+  --red: #9b2a27;
+  --olive: #536026;
+  --bar: #d9d8cd;
+  --term-bg: #0c110d;
+  --term-fg: #b1d5a2;
+  --term-accent: #e4b87a;
+  --term-muted: #8b9985;
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  margin: 0; background: var(--page); color: var(--ink);
+  font: 13px/1.65 Verdana, "MS PGothic", "ＭＳ Ｐゴシック", Osaka, sans-serif;
+}
+a { color: var(--blue); text-decoration: underline; text-underline-offset: 2px; }
+a:visited { color: var(--visited); }
+a:hover { color: #c43826; background: #fffbda; }
+button,input,textarea { font: inherit; }
+button { cursor: pointer; }
+button:disabled { cursor: not-allowed; opacity: .6; }
+:focus-visible { outline: 2px solid #cc4c1d; outline-offset: 3px; }
+.skip-link { position: absolute; left: 8px; top: -80px; background: white; z-index: 10; padding: 6px 10px; }
+.skip-link:focus { top: 8px; }
+.site-shell { width: min(1270px, calc(100% - 48px)); margin: 22px auto 36px; }
+.masthead { background: var(--paper); border: 1px solid var(--line-strong); border-top: 3px double #56574f; }
+.top-notice { padding: 2px 12px; display: flex; justify-content: space-between; gap: 12px; border-bottom: 1px solid var(--line); font: 10px/1.9 monospace; color: var(--sub); background: #d9d7cc; }
+.clock { font-variant-numeric: tabular-nums; }
+.title-row { padding: 21px 21px 18px; display: flex; justify-content: space-between; align-items: center; gap: 25px; }
+.title-main { display: flex; align-items: center; gap: 16px; min-width: 0; }
+.site-stamp { border: 3px solid #38392e; outline: 1px solid var(--line); outline-offset: 2px; box-shadow: 3px 3px 0 #cfcbc0; color: var(--blue); font: 900 38px/.95 Georgia, serif; width: 66px; height: 66px; text-align: center; padding-top: 10px; flex: none; background: #edeadf; transform: rotate(-1.5deg); }
+.site-stamp span { color: var(--red); font-size: 19px; vertical-align: sub; margin-left: -7px; }
+.micro { margin: 0 0 1px; letter-spacing: 1px; color: var(--olive); font-size: 11px; }
+h1 { font-family: Georgia, "MS PGothic", serif; font-size: clamp(22px, 2.35vw, 30px); color: #282e45; line-height: 1.25; letter-spacing: -.6px; margin: 0; }
+.title-suffix { color: #545147; font: 500 14px/1.2 "MS PGothic", sans-serif; white-space: nowrap; }
+.description { margin: 9px 0 0; color: #5f5c50; }
+.header-meta { color: var(--sub); font-size: 11px; min-width: 207px; padding: 8px 10px; line-height: 1.95; background: #f1efe5; border: 1px dotted var(--line); white-space: nowrap; }
+.header-meta strong { color: #37342d; }
+#visit-counter { background: #181c15; color: #e3dfbe; letter-spacing: 3px; font: 13px/1.5 "Courier New", monospace; border: 2px inset #88897e; padding: 0 2px 0 5px; }
+.top-links { background: #e0dfd5; padding: 6px 16px; border-top: 1px solid var(--line); display: flex; gap: 8px; flex-wrap: wrap; font-family: Georgia, monospace; font-size: 12px; font-weight: 700; }
+.top-links span { color: #88867d; }
+.top-links a[aria-current="page"] { color: var(--red); background: #f5f3e9; text-decoration: none; }
+.page-grid { display: grid; grid-template-columns: 181px minmax(0, 1fr) 302px; align-items: start; gap: 12px; margin-top: 14px; }
+.sidebar, .terminal-column { min-width: 0; }
+.side-box { border: 1px solid var(--line); background: var(--paper); margin-bottom: 12px; padding: 0 9px 9px; }
+.side-box h2 { font-size: 12px; font-weight: 700; color: #373830; margin: 0 -9px 8px; padding: 3px 8px; border-bottom: 1px solid #aaa89c; background: #d8d6c9; }
+.side-box p { margin: 7px 0; font-size: 12px; line-height: 1.7; }
+.folder-menu { padding: 0; margin: 0; list-style: none; }
+.folder-menu li { margin-bottom: 2px; }
+.folder-menu a { display: block; padding: 4px 2px 4px 9px; color: #164488; text-decoration: none; border-bottom: 1px dotted #c9c7bb; position: relative; }
+.folder-menu a::before { content: "›"; color: #9e4c24; position: absolute; left: 0; }
+.folder-menu a:hover,.folder-menu a[aria-current="page"] { background: #fff6d8; color: #9c3225; text-decoration: underline; }
+.mini-profile p { overflow-wrap: anywhere; }
+.retro-banner { margin: 13px auto 3px; height: 31px; width: 88px; text-align: center; border: 2px outset #b9b7a9; background: repeating-linear-gradient(90deg,#292d30 0,#292d30 6px,#41464b 6px,#41464b 7px); color: #ffffc5; line-height: 1; display: flex; flex-direction: column; align-items: center; justify-content: center; }
+.retro-banner span { font: 9px "Courier New", monospace; letter-spacing: 1.7px; }
+.retro-banner strong { font: 700 10px Arial,sans-serif; }
+kbd { background: #e8e7dc; border: 1px solid #aca99d; padding: 0 3px; font: 11px monospace; }
+.old-button { background: #e7e5da; border: 2px outset #fdfcf6; padding: 3px 6px; color: #234683; font-size: 12px; }
+.old-button:active { border-style: inset; }
+.main-content { min-width: 0; }
+.paper { border: 1px solid var(--line-strong); background: var(--paper); padding: 13px 15px 17px; margin-bottom: 12px; }
+.location { font-size: 11px; color: var(--sub); margin: 0 0 10px; border-bottom: 1px dotted var(--line); padding-bottom: 5px; }
+.board-title { margin: 0 0 9px; color: #263c70; font: 700 18px/1.4 Georgia,"MS PGothic",serif; }
+.board-title::before { content: "■ "; color: #a24929; font-size: 14px; }
+.section-title { margin: 15px 0 5px; font-size: 13px; color: #8c3b20; font-weight: bold; border-left: 4px solid #a06e2e; padding-left: 6px; }
+.board-intro { font-size: 12px; color: var(--sub); margin: 2px 0 14px; }
+.notice { background: #f6f3dc; border: 1px solid #ccc59d; padding: 7px 9px; margin: 11px 0 14px; font-size: 12px; }
+.notice strong { color: #8a3125; }
+.inline-links { padding-top: 10px; font-size: 12px; }
+.link-dot { margin: 0 7px; color: #888; }
+.bbs-search { display: flex; align-items: center; gap: 7px; flex-wrap: wrap; margin: 8px 0; }
+.bbs-search label { white-space: nowrap; font-size: 12px; }
+.bbs-search input { min-width: 0; flex: 1; padding: 4px 5px; border: 2px inset #ddd; background: #fff; border-radius: 0; color: var(--ink); }
+.bbs-table { width: 100%; border-collapse: collapse; font-size: 12px; background: #fffefa; margin-top: 8px; }
+.bbs-table caption { text-align: left; margin-bottom: 4px; color: var(--sub); font-size: 11px; }
+.bbs-table th { padding: 5px 6px; text-align: left; background: #d6d4c7; color: #38372d; border: 1px solid #a7a495; white-space: nowrap; }
+.bbs-table td { padding: 7px 6px; border: 1px solid #cbc9bd; vertical-align: top; }
+.bbs-table tbody tr:nth-child(even) { background: #f2f1ea; }
+.bbs-table tbody tr:hover { background: #fff5d7; }
+.bbs-table td:first-child { width: 34px; color: #776e61; text-align: center; font: 12px/1.5 monospace; }
+.bbs-table .col-count { width: 41px; text-align: center; font-family: monospace; }
+.bbs-table .col-date { width: 103px; white-space: nowrap; font: 11px/1.6 monospace; }
+.category { color: #77746a; font-size: 11px; margin-left: 5px; }
+.bbs-bottom { margin: 8px 0 0; color: var(--sub); font-size: 11px; }
+.small-print { font-size: 11px; color: var(--sub); }
+.latest-list { padding: 0 0 0 16px; margin: 5px 0 0; }
+.latest-list li { padding-bottom: 4px; }
+.thread-top { margin-bottom: 11px; }
+.thread-top h2 { font-size: 17px; line-height: 1.45; margin: 7px 0 4px; color: #273c6f; }
+.thread-meta { font-size: 11px; color: var(--sub); margin-bottom: 12px; }
+.post { margin: 0 0 9px; padding: 10px 11px 11px; background: #fffefa; border: 1px solid #c5c1b4; }
+.post:target { background: #fff9e1; }
+.post-head { color: #646154; font: 12px/1.6 "Courier New","MS PGothic",monospace; margin-bottom: 10px; overflow-wrap: anywhere; }
+.post-num { font-weight: bold; color: #8d3b21; }
+.post-author { color: #1b6a3b; font-weight: bold; }
+.post-id { color: #8c8579; font-size: 11px; }
+.post-subject { font-weight: 700; color: #343434; margin: 0 0 7px; }
+.post-body { padding-left: 13px; overflow-wrap: anywhere; font-size: 13px; }
+.post-body p { margin: 0 0 9px; }
+.post-body p:last-child { margin-bottom: 0; }
+.post-body ul { padding-left: 20px; margin: 2px 0; }
+.post-body li { margin: 0 0 5px; }
+.post-body .link-line { margin: 5px 0; }
+.post-refs { font-size: 11px; color: var(--olive); margin-top: 10px; }
+.thread-footnote { color: #77746c; font-size: 11px; margin: 12px 0; }
+.entry-form { padding: 12px; background: #efeee7; border: 1px solid #aaa89d; }
+.entry-form label { display: block; margin-bottom: 3px; font-weight: bold; }
+.entry-form input, .entry-form textarea { display: block; width: 100%; padding: 6px; border: 2px inset #d2d0c6; background: white; color: #202020; border-radius: 0; margin-bottom: 10px; }
+.entry-form textarea { min-height: 86px; resize: vertical; }
+.entry-actions { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; }
+.entry-actions button { background: #e7e7dc; padding: 5px 10px; border: 2px outset #fff; }
+.entry-actions button:active { border-style: inset; }
+.entry-preview { margin-top: 13px; }
+.entry-list { list-style: none; padding: 0; margin: 6px 0 0; }
+.entry-list li { padding: 10px; border: 1px solid #c5c3b9; background: #fffefa; margin-bottom: 6px; }
+.entry-list .entry-meta { color: #486b3a; font-size: 11px; margin-bottom: 5px; }
+.entry-list p { margin: 0; white-space: pre-wrap; overflow-wrap: anywhere; }
+.terminal-column { position: sticky; top: 14px; }
+.terminal-outer { border: 2px outset #babbae; background: #777b72; box-shadow: 2px 2px 0 #b9b8af; }
+.terminal-titlebar { background: linear-gradient(90deg,#3f493d,#76836d); color: #fafbf6; padding: 3px 6px 3px 8px; font: 700 12px/1.5 "Courier New",monospace; display: flex; justify-content: space-between; gap: 8px; }
+.indicator { display: inline-block; width: 8px; height: 8px; background: #bada90; border: 1px solid #253a24; margin-right: 4px; }
+.terminal-titlebar button { padding: 0 3px; font: 12px/1.5 monospace; background: #c4c6b8; border: 1px outset #eee; min-width: 30px; color: #1e261d; }
+.terminal-inner { background: var(--term-bg); color: var(--term-fg); padding: 12px 10px 7px; font: 12px/1.55 "Courier New", "MS Gothic", monospace; }
+.terminal-output { height: 320px; overflow-y: auto; scrollbar-color: #697263 #1b241b; overscroll-behavior: contain; white-space: pre-wrap; overflow-wrap: anywhere; }
+.terminal-line { margin: 0 0 3px; white-space: pre-wrap; }
+.terminal-line.command { color: #f5f3d2; }
+.terminal-line.muted { color: var(--term-muted); }
+.terminal-line.error { color: #ff9b94; }
+.terminal-line.accent { color: var(--term-accent); }
+.terminal-prompt { display: flex; flex-wrap: wrap; gap: 4px; margin-top: 7px; align-items: baseline; border-top: 1px solid #304033; padding-top: 7px; }
+.terminal-prompt label { white-space: nowrap; color: var(--term-accent); }
+.terminal-prompt input { width: 70px; flex: 1; min-width: 42px; border: 0; background: transparent; padding: 0; color: #f5f7db; font: inherit; caret-color: #c1d9a7; outline: none; border-radius: 0; }
+.terminal-prompt:focus-within { background: #131f16; }
+.terminal-hint { color: var(--term-muted); font: 10px/1.6 monospace; margin-top: 5px; }
+.terminal-inner[hidden] { display: none; }
+.about-terminal { margin-top: 12px; }
+.link-button { border: 0; padding: 0; background: none; color: var(--blue); text-decoration: underline; cursor: pointer; }
+.link-button:hover { color: var(--red); }
+.site-footer { margin-top: 15px; border-top: 3px double #969287; text-align: center; padding: 12px 6px; color: var(--sub); font-size: 11px; display: flex; justify-content: center; flex-wrap: wrap; gap: 4px 14px; }
+.footer-glyph { color: #847f71; }
+.theme-amber { --term-fg: #edbd7a; --term-accent: #fbddab; --term-bg: #150f08; --term-muted: #a88a67; }
+.theme-green { --term-fg: #5bfb82; --term-accent: #b0ffb9; --term-bg: #030b05; --term-muted: #679e78; }
+@media (max-width: 1120px) {
+  .page-grid { grid-template-columns: 181px minmax(0,1fr); }
+  .terminal-column { grid-column: 2; position: static; }
+  .terminal-output { height: 220px; }
+  .about-terminal { display: none; }
+}
+@media (max-width: 740px) {
+  .site-shell { width: calc(100% - 20px); margin: 10px auto 18px; }
+  .title-row { padding: 13px 12px; align-items: start; gap: 11px; flex-wrap: wrap; }
+  .site-stamp { height: 48px; width: 48px; font-size: 27px; padding-top: 8px; }
+  .site-stamp span { font-size: 14px; }
+  h1 { font-size: 24px; }
+  .header-meta { width: 100%; padding: 4px 8px; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 0 10px; min-width: 0; }
+  .page-grid { display: flex; flex-direction: column; gap: 10px; }
+  .sidebar,.main-content,.terminal-column { width: 100%; }
+  .sidebar .side-box { margin: 0; }
+  .sidebar .side-box:not(:first-child) { display: none; }
+  .folder-menu { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 0 6px; }
+  .folder-menu a { padding: 5px 4px 5px 9px; }
+  .main-content { order: 2; }
+  .sidebar { order: 1; }
+  .terminal-column { order: 3; }
+  .paper { padding: 11px 10px 13px; }
+  .post { padding: 9px; }
+  .post-body { padding-left: 2px; }
+  .terminal-output { height: 250px; }
+  .bbs-table .col-date, .bbs-table th.col-date { display: none; }
+  .bbs-table th,.bbs-table td { padding: 6px 4px; }
+  .category { display: none; }
+  .top-links { font-size: 11px; gap: 5px; padding: 5px 8px; }
+}
+@media (max-width: 370px) {
+  .site-stamp { display: none; }
+  .title-suffix { display: block; margin-top: 3px; }
+  .bbs-table .col-count,.bbs-table th.col-count { display: none; }
+}
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+
+/* ---------- neet 2.0 : 2000年頃のテキスト掲示板を意識したモード ---------- */
+.neet-board-header { display: none; }
+body.neet-installed {
+  --page: #efefef;
+  --paper: #efefef;
+  --panel: #dddddd;
+  --ink: #141414;
+  --sub: #555;
+  --line: #aaa;
+  --line-strong: #888;
+  --blue: #0000ee;
+  --visited: #551a8b;
+  --red: #bb0000;
+  --bar: #dedede;
+  background: var(--page);
+  color: var(--ink);
+  font: 13px/1.55 "MS PGothic", "ＭＳ Ｐゴシック", Osaka, Arial, sans-serif;
+}
+body.neet-installed a { color: #0000ee; text-underline-offset: 0; }
+body.neet-installed a:visited { color: #551a8b; }
+body.neet-installed a:hover { color: #ff0000; background: transparent; }
+body.neet-installed .site-shell { width: min(1190px, calc(100% - 18px)); margin: 7px auto 22px; }
+body.neet-installed .masthead { background: transparent; border: 0; }
+body.neet-installed .top-notice { padding: 2px 6px; background: #d9d9d9; border: 1px solid #bcbcbc; color: #666; }
+body.neet-installed .neet-board-header {
+  display: block; padding: 12px 8px 9px; text-align: center;
+  border-bottom: 1px dotted #888;
+}
+body.neet-installed .neet-board-name {
+  color: #c31515; font: 700 clamp(28px, 4.3vw, 46px)/1.3 "MS PGothic", "ＭＳ Ｐゴシック", sans-serif;
+  letter-spacing: 0;
+}
+body.neet-installed .neet-board-tagline { color: #343434; margin-top: 2px; font-weight: bold; font-size: 14px; }
+body.neet-installed .neet-board-header p { margin: 9px 0 0; font-size: 11px; color: #666; }
+body.neet-installed .title-row { display: none; }
+body.neet-installed .top-links {
+  background: none; padding: 7px 4px 9px; border: 0; justify-content: center;
+  font: 12px/1.5 "MS PGothic", sans-serif; gap: 5px;
+}
+body.neet-installed .top-links a { font-weight: normal; }
+body.neet-installed .top-links a[aria-current="page"] { background: none; color: #c31515; text-decoration: underline; }
+body.neet-installed .page-grid {
+  display: grid; grid-template-columns: 162px minmax(0, 1fr); gap: 14px;
+  align-items: start; margin-top: 6px;
+}
+body.neet-installed .sidebar { grid-column: 1; grid-row: 1; }
+body.neet-installed .main-content { grid-column: 2; grid-row: 1; }
+body.neet-installed .terminal-column {
+  grid-column: 1 / -1; grid-row: 2; position: static; min-width: 0;
+  border-top: 1px dotted #999; padding-top: 7px;
+}
+body.neet-installed .terminal-outer { border: 1px solid #898989; box-shadow: none; background: transparent; }
+body.neet-installed .terminal-titlebar { background: #d5d5d5; color: #333; border-bottom: 1px solid #999; font: 700 12px/1.5 monospace; }
+body.neet-installed .terminal-titlebar button { background: #eee; }
+body.neet-installed .terminal-inner { background: #101510; padding: 10px 12px 7px; }
+body.neet-installed .terminal-output { height: 205px; }
+body.neet-installed .about-terminal { display: block; background: none; border: none; padding: 0 6px; margin: 3px 0 0; }
+body.neet-installed .about-terminal h2 { display: none; }
+body.neet-installed .about-terminal p { display: inline; margin-right: 15px; color: #666; font-size: 11px; }
+body.neet-installed .side-box { padding: 0 0 9px; border: 0; margin-bottom: 7px; background: none; }
+body.neet-installed .side-box h2 {
+  margin: 0 0 4px; padding: 3px 4px; background: #d7d7d7;
+  border: 1px solid #a5a5a5; color: #222; text-align: center;
+  font-size: 12px;
+}
+body.neet-installed .side-box p { font-size: 11px; padding: 0 4px; }
+body.neet-installed .folder-menu a {
+  border: 0; padding: 1px 3px 1px 6px; color: #0000ee;
+  text-decoration: underline; font-size: 12px;
+}
+body.neet-installed .folder-menu a::before { content: ""; }
+body.neet-installed .folder-menu a:hover, body.neet-installed .folder-menu a[aria-current="page"] { color: #e00000; background: none; }
+body.neet-installed .mini-profile { border-top: 1px dotted #aaa; padding-top: 4px; }
+body.neet-installed .retro-banner { box-shadow: none; }
+body.neet-installed .paper {
+  border: 0; background: transparent; padding: 0 4px 15px;
+  margin: 0 0 15px;
+}
+body.neet-installed .location { border-bottom: 0; margin-bottom: 7px; padding: 0; }
+body.neet-installed .neet-index-title { color: #bc1616; font-size: 18px; margin: 8px 0 3px; }
+body.neet-installed .neet-board-description { margin: 3px 0 12px; font-size: 12px; }
+body.neet-installed .neet-index-bar { background: #d4d4d4; border: 1px solid #9a9a9a; font-weight: bold; padding: 3px 7px; margin: 8px 0; }
+body.neet-installed .bbs-search { margin: 6px 0; }
+body.neet-installed .bbs-search input { padding: 2px 5px; border: 1px solid #777; width: min(100%, 310px); flex: 0 1 310px; }
+body.neet-installed .neet-thread-list { padding-left: 32px; margin: 12px 0; }
+body.neet-installed .neet-thread-list li { margin: 4px 0; padding: 1px 0; line-height: 1.4; overflow-wrap: anywhere; }
+body.neet-installed .neet-index-count { font-size: 11px; color: #666; margin: 8px 0 14px; }
+body.neet-installed .neet-guide { padding: 2px 6px; line-height: 1.8; }
+body.neet-installed .thread-top h2 { font: bold 18px/1.45 "MS PGothic", sans-serif; color: #c31515; margin-bottom: 5px; }
+body.neet-installed .thread-meta { border-bottom: 1px solid #bbb; padding-bottom: 8px; }
+body.neet-installed .post { margin: 0 0 21px; padding: 0 0 0 3px; border: 0; background: transparent; }
+body.neet-installed .post:target { background: #ffffe0; }
+body.neet-installed .post-head { font: 12px/1.6 "MS PGothic", "ＭＳ Ｐゴシック", sans-serif; margin: 0 0 4px; color: #555; }
+body.neet-installed .post-num { color: #444; font-weight: normal; }
+body.neet-installed .post-author { color: #118a00; }
+body.neet-installed .post-id { color: #555; }
+body.neet-installed .post-subject { margin: 0 0 2px 21px; font-size: 12px; color: #a65c17; font-weight: 600; }
+body.neet-installed .post-body { padding-left: 20px; font-size: 13px; }
+body.neet-installed .post-body p { margin-bottom: 6px; }
+body.neet-installed .post-body ul { margin: 0 0 8px; }
+body.neet-installed .thread-footnote { margin: 10px 0; }
+body.neet-installed .notice { border: 1px solid #ccc; background: #f5f5e8; }
+body.neet-installed .entry-form { background: #dfdfdf; border: 1px solid #aaa; }
+body.neet-installed .entry-list li { border: 0; background: transparent; padding: 3px 0 10px; border-bottom: 1px dotted #bbb; }
+body.neet-installed .site-footer { border-top: 1px solid #aaa; margin-top: 10px; color: #777; }
+@media (max-width: 740px) {
+  body.neet-installed .page-grid { grid-template-columns: minmax(0, 1fr); gap: 8px; }
+  body.neet-installed .sidebar { grid-column: 1; grid-row: 1; }
+  body.neet-installed .main-content { grid-column: 1; grid-row: 2; }
+  body.neet-installed .terminal-column { grid-column: 1; grid-row: 3; }
+  body.neet-installed .sidebar .side-box:first-child { display: block; }
+  body.neet-installed .folder-menu { display: flex; flex-wrap: wrap; gap: 3px 8px; }
+  body.neet-installed .folder-menu a { padding: 1px 2px; }
+  body.neet-installed .neet-board-name { font-size: clamp(22px, 6.6vw, 34px); }
+  body.neet-installed .neet-board-tagline { font-size: 11px; }
+  body.neet-installed .paper { padding: 0 3px 12px; }
+  body.neet-installed .neet-thread-list { padding-left: 26px; }
+  body.neet-installed .terminal-output { height: 220px; }
+  body.neet-installed .about-terminal { display: none; }
+}
