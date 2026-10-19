@@ -442,7 +442,7 @@
     const args = parts;
     switch (command) {
       case 'help':
-        lines('使用できるコマンド：\n  help                一覧を表示\n  whoami              管理人について\n  ls                  ファイル一覧\n  cat <ファイル名>     ファイルを読む\n  open <ページ名>     ページを開く\n  status / neofetch   情報を表示\n  theme <classic|amber|green>\n  sudo su             疑似rootモード\n  sudo cat /root/secret.txt  隠しファイル\n  sudo apt install neet     2ch風UIを導入\n  sudo apt remove neet      元のUIに戻す\n  exit                rootを抜ける／端末を閉じる\n  history / clear / date / pwd');
+        lines('使用できるコマンド：\n  help                一覧を表示\n  whoami              管理人について\n  ls                  ファイル一覧\n  cat <ファイル名>     ファイルを読む\n  open <ページ名>     ページを開く\n  status / neofetch   情報を表示\n  theme <classic|amber|green>\n  sudo su             疑似rootモード\n  history / clear / date / pwd');
         break;
       case 'whoami':
         lines('YousotuNeet\nMinecraftのサーバー運営、Web、プラグイン制作などをしています。\n詳しくは `open profile`'); break;
